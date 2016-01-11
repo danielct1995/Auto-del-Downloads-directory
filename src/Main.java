@@ -29,7 +29,7 @@ public class Main extends javax.swing.JFrame {
         if(this.files==null||this.files.length==0||this.files.length<this.umbral){
             System.exit(0);
         }
-        this.img= new ImageIcon(getClass().getResource("/resources/papelera.png"));
+    //    this.img= new ImageIcon(getClass().getResource("/resources/papelera.png"));
         initComponents();
         this.setTitle("Recolector de basura - Carpeta de Descargas");
         this.jLabel2.setText("Hola, hay "
@@ -51,7 +51,7 @@ public class Main extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel2 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel(this.img);
+    //    jLabel1 = new javax.swing.JLabel(this.img);
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
@@ -270,7 +270,7 @@ public class Main extends javax.swing.JFrame {
     }
     
     private boolean delCarpetas =false;
-    private final ImageIcon img ;
+  //  private final ImageIcon img ;
     private File direct;
     private File files[];
     private int umbral;
