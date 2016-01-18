@@ -31,6 +31,12 @@ public class Main extends javax.swing.JFrame {
         }
     //    this.img= new ImageIcon(getClass().getResource("/resources/papelera.png"));
         initComponents();
+        String system = new String(System.getProperty("os.name"));
+        String cls=new String(system.substring(0,system.indexOf(' ')));
+        system=null;
+        if(!cls.equalsIgnoreCase("Windows")){
+            this.jButton3.setVisible(false);
+        }  
         this.setTitle("Recolector de basura - Carpeta de Descargas");
         this.jLabel2.setText("Hola, hay "
                 + this.files.length
@@ -48,22 +54,21 @@ public class Main extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
-    private void initComponents() {
+     private void initComponents() {
 
         jLabel2 = new javax.swing.JLabel();
-    //    jLabel1 = new javax.swing.JLabel(this.img);
+        jLabel1 = new javax.swing.JLabel(this.img);
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         selcarpetas = new javax.swing.JCheckBox();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel2.setText("Este es un testeo de la ventana");
         jLabel2.setToolTipText("");
-
-        jLabel1.setText("jLabel1");
 
         jButton1.setText("Borrar elementos");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -90,13 +95,22 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        jButton3.setText("Mostrar carpeta");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(14, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
+                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -130,11 +144,12 @@ public class Main extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
-                    .addComponent(jButton1)))
+                    .addComponent(jButton1)
+                    .addComponent(jButton3)))
         );
 
         pack();
-    }// </editor-fold>                        
+    }// </editor-fold>                       
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         // TODO add your handling code here:
@@ -161,6 +176,15 @@ public class Main extends javax.swing.JFrame {
         this.delCarpetas=!this.delCarpetas;
     }                                           
 
+     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        // TODO add your handling code here:
+        Runtime aplicacion = Runtime.getRuntime(); 
+        String addr=new String("C:\\Windows\\explorer.exe");
+        addr=addr.concat(" ");
+        addr =addr.concat(this.direct.getPath());
+        try{aplicacion.exec(addr); }
+        catch(Exception e){System.out.println(e);}
+    }
     /**
      * @param args the command line arguments
      */
@@ -278,6 +302,7 @@ public class Main extends javax.swing.JFrame {
     // Variables declaration - do not modify                     
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
